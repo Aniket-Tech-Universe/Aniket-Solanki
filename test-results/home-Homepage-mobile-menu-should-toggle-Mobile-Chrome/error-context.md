@@ -1,0 +1,431 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e6] [cursor=pointer]:
+    - button "Open Next.js Dev Tools" [ref=e7]:
+      - img [ref=e8]
+    - generic [ref=e11]:
+      - button "Open issues overlay" [ref=e12]:
+        - generic [ref=e13]:
+          - generic [ref=e14]: "2"
+          - generic [ref=e15]: "3"
+        - generic [ref=e16]:
+          - text: Issue
+          - generic [ref=e17]: s
+      - button "Collapse issues badge" [ref=e18]:
+        - img [ref=e19]
+  - banner [ref=e21]:
+    - generic [ref=e22]:
+      - link "Portfolio" [ref=e23] [cursor=pointer]:
+        - /url: "#home"
+      - button "Toggle menu" [ref=e24]:
+        - img [ref=e25]
+  - main [ref=e26]:
+    - generic [ref=e27]:
+      - generic [ref=e32]:
+        - generic [ref=e37]: Available for new opportunities
+        - heading "Building the Future of AI & Web" [level=1] [ref=e38]:
+          - generic "Building the Future of" [ref=e39]:
+            - generic [ref=e40]: B
+            - generic [ref=e41]: u
+            - generic [ref=e42]: i
+            - generic [ref=e43]: l
+            - generic [ref=e44]: d
+            - generic [ref=e45]: i
+            - generic [ref=e46]: "n"
+            - generic [ref=e47]: g
+            - generic [ref=e49]: t
+            - generic [ref=e50]: h
+            - generic [ref=e51]: e
+            - generic [ref=e53]: F
+            - generic [ref=e54]: u
+            - generic [ref=e55]: t
+            - generic [ref=e56]: u
+            - generic [ref=e57]: r
+            - generic [ref=e58]: e
+            - generic [ref=e60]: o
+            - generic [ref=e61]: f
+          - generic "AI & Web" [ref=e64]:
+            - generic [ref=e65]: A
+            - generic [ref=e66]: I
+            - generic [ref=e68]: "&"
+            - generic [ref=e70]: W
+            - generic [ref=e71]: e
+            - generic [ref=e72]: b
+        - generic [ref=e74]: Creative Technologist & AI Specialist
+        - paragraph [ref=e76]: I craft performance-obsessed digital experiences and intelligent systems. Bridging the gap between stunning 3D interfaces and powerful AI logic to build products that feel alive.
+        - generic [ref=e77]:
+          - link "View My Work" [ref=e78] [cursor=pointer]:
+            - /url: "#projects"
+            - generic [ref=e80]: View My Work
+          - link "Get In Touch" [ref=e81] [cursor=pointer]:
+            - /url: "#contact"
+            - generic [ref=e83]: Get In Touch
+        - generic [ref=e84]:
+          - link "GitHub" [ref=e85] [cursor=pointer]:
+            - /url: https://github.com/ssani
+            - img [ref=e86]
+          - link "LinkedIn" [ref=e89] [cursor=pointer]:
+            - /url: https://linkedin.com/in/ssani
+            - img [ref=e90]
+          - link "Twitter" [ref=e94] [cursor=pointer]:
+            - /url: https://twitter.com/ssani_dev
+            - img [ref=e95]
+          - link "Email" [ref=e97] [cursor=pointer]:
+            - /url: mailto:contact@ssani.dev
+            - img [ref=e98]
+      - link "Scroll" [ref=e102] [cursor=pointer]:
+        - /url: "#about"
+        - generic [ref=e103]: Scroll
+        - img [ref=e104]
+    - generic [ref=e107]:
+      - generic [ref=e108]:
+        - generic [ref=e109]: About Me
+        - heading "Crafting Digital Experiences" [level=2] [ref=e110]
+        - paragraph [ref=e111]: I'm a Creative Technologist who lives at the intersection of design, performance, and artificial intelligence. My goal is to build digital products that are not just functional, but unforgettable.
+      - generic [ref=e112]:
+        - generic [ref=e113]:
+          - generic [ref=e114]: 4+
+          - generic [ref=e115]: Years Experience
+        - generic [ref=e116]:
+          - generic [ref=e117]: 30+
+          - generic [ref=e118]: Successful Projects
+        - generic [ref=e119]:
+          - generic [ref=e120]: 95+
+          - generic [ref=e121]: Performance Score
+        - generic [ref=e122]:
+          - generic [ref=e123]: 10+
+          - generic [ref=e124]: AI Models Tuned
+      - generic [ref=e125]:
+        - generic [ref=e126]:
+          - img [ref=e128]
+          - heading "AI Integration" [level=3] [ref=e131]
+          - paragraph [ref=e132]: Building intelligent agents and voice bots using OpenAI and Twilio.
+        - generic [ref=e133]:
+          - img [ref=e135]
+          - heading "Modern Tech" [level=3] [ref=e139]
+          - paragraph [ref=e140]: Expert in Next.js, React, and Type-Safe full-stack architectures.
+        - generic [ref=e141]:
+          - img [ref=e143]
+          - heading "Creative Coding" [level=3] [ref=e149]
+          - paragraph [ref=e150]: Crafting immersive 3D experiences with Three.js and GSAP.
+        - generic [ref=e151]:
+          - img [ref=e153]
+          - heading "Performance" [level=3] [ref=e158]
+          - paragraph [ref=e159]: Obsessed with Core Web Vitals and sub-second load times.
+    - generic [ref=e161]:
+      - generic [ref=e162]:
+        - generic [ref=e163]: Skills & Expertise
+        - heading "My Tech Stack" [level=2] [ref=e164]
+        - paragraph [ref=e165]: A potent combination of cutting-edge web technologies, AI integration, and performance optimization tools.
+      - generic [ref=e166]:
+        - generic [ref=e167]:
+          - heading "Modern Frontend" [level=3] [ref=e168]
+          - generic [ref=e169]:
+            - generic [ref=e171]:
+              - generic [ref=e172]: Next.js 15 / React
+              - generic [ref=e173]: 98%
+            - generic [ref=e176]:
+              - generic [ref=e177]: TypeScript
+              - generic [ref=e178]: 95%
+            - generic [ref=e181]:
+              - generic [ref=e182]: Three.js / R3F
+              - generic [ref=e183]: 85%
+            - generic [ref=e186]:
+              - generic [ref=e187]: GSAP / Framer Motion
+              - generic [ref=e188]: 92%
+        - generic [ref=e190]:
+          - heading "AI & Backend" [level=3] [ref=e191]
+          - generic [ref=e192]:
+            - generic [ref=e194]:
+              - generic [ref=e195]: OpenAI / LLMs
+              - generic [ref=e196]: 90%
+            - generic [ref=e199]:
+              - generic [ref=e200]: Node.js / Bun
+              - generic [ref=e201]: 88%
+            - generic [ref=e204]:
+              - generic [ref=e205]: Twilio API
+              - generic [ref=e206]: 95%
+            - generic [ref=e209]:
+              - generic [ref=e210]: Python
+              - generic [ref=e211]: 80%
+        - generic [ref=e213]:
+          - heading "Performance & Tools" [level=3] [ref=e214]
+          - generic [ref=e215]:
+            - generic [ref=e217]:
+              - generic [ref=e218]: GA4 / GTM
+              - generic [ref=e219]: 95%
+            - generic [ref=e222]:
+              - generic [ref=e223]: Web Vitals Optimization
+              - generic [ref=e224]: 98%
+            - generic [ref=e227]:
+              - generic [ref=e228]: Git / CI/CD
+              - generic [ref=e229]: 90%
+            - generic [ref=e232]:
+              - generic [ref=e233]: Figma
+              - generic [ref=e234]: 85%
+      - generic [ref=e236]:
+        - generic [ref=e237]: Next.js
+        - generic [ref=e238]: React
+        - generic [ref=e239]: TypeScript
+        - generic [ref=e240]: Tailwind CSS
+        - generic [ref=e241]: Three.js
+        - generic [ref=e242]: GSAP
+        - generic [ref=e243]: OpenAI
+        - generic [ref=e244]: LangChain
+        - generic [ref=e245]: Twilio
+        - generic [ref=e246]: Python
+        - generic [ref=e247]: Node.js
+        - generic [ref=e248]: PostgreSQL
+        - generic [ref=e249]: Google Analytics 4
+        - generic [ref=e250]: GTM
+        - generic [ref=e251]: Docker
+        - generic [ref=e252]: AWS
+        - generic [ref=e253]: Vercel
+        - generic [ref=e254]: Figma
+    - generic [ref=e256]:
+      - generic [ref=e257]:
+        - generic [ref=e258]: Portfolio
+        - heading "Featured Projects" [level=2] [ref=e259]
+        - paragraph [ref=e260]: A selection of projects that showcase my skills and passion for building exceptional digital products.
+      - generic [ref=e261]:
+        - button "All" [ref=e262]
+        - button "Web" [ref=e263]
+        - button "App" [ref=e264]
+        - button "AI" [ref=e265]
+        - button "Library" [ref=e266]
+      - generic [ref=e267]:
+        - article [ref=e268]:
+          - link "E View Case Study Featured Enterprise AI Voice Assistant Intelligent voice bot for visa consultation scheduling with real-time natural language processing. OpenAI Twilio Node.js +2 2024" [ref=e269] [cursor=pointer]:
+            - /url: /projects/ai-voice-assistant
+            - generic [ref=e270]:
+              - generic [ref=e271]:
+                - generic [ref=e273]: E
+                - generic [ref=e275]:
+                  - text: View Case Study
+                  - img [ref=e276]
+                - generic [ref=e279]: Featured
+              - heading "Enterprise AI Voice Assistant" [level=3] [ref=e280]
+              - paragraph [ref=e281]: Intelligent voice bot for visa consultation scheduling with real-time natural language processing.
+              - generic [ref=e282]:
+                - generic [ref=e283]: OpenAI
+                - generic [ref=e284]: Twilio
+                - generic [ref=e285]: Node.js
+                - generic [ref=e286]: "+2"
+              - generic [ref=e287]:
+                - link [ref=e288]:
+                  - /url: https://github.com/ssani/ai-voice-assistant
+                  - img [ref=e289]
+                - link [ref=e292]:
+                  - /url: https://ai-voice-assistant.demo.com
+                  - img [ref=e293]
+                - generic [ref=e297]: "2024"
+        - article [ref=e298]:
+          - link "I View Case Study Featured Immersive 3D Commerce Platform Next-generation e-commerce experience featuring real-time 3D product visualization. Next.js 16 R3F WebGL +2 2024" [ref=e299] [cursor=pointer]:
+            - /url: /projects/immersive-3d-commerce
+            - generic [ref=e300]:
+              - generic [ref=e301]:
+                - generic [ref=e303]: I
+                - generic [ref=e305]:
+                  - text: View Case Study
+                  - img [ref=e306]
+                - generic [ref=e309]: Featured
+              - heading "Immersive 3D Commerce Platform" [level=3] [ref=e310]
+              - paragraph [ref=e311]: Next-generation e-commerce experience featuring real-time 3D product visualization.
+              - generic [ref=e312]:
+                - generic [ref=e313]: Next.js 16
+                - generic [ref=e314]: R3F
+                - generic [ref=e315]: WebGL
+                - generic [ref=e316]: "+2"
+              - generic [ref=e317]:
+                - link [ref=e318]:
+                  - /url: https://github.com/ssani/immersive-3d-commerce
+                  - img [ref=e319]
+                - link [ref=e322]:
+                  - /url: https://commerce.demo.com
+                  - img [ref=e323]
+                - generic [ref=e327]: "2024"
+        - article [ref=e328]:
+          - link "A View Case Study Featured Analytics & Performance System Enterprise-grade analytics integration with 90+ mobile performance optimization. GA4 GTM Web Vitals +2 2024" [ref=e329] [cursor=pointer]:
+            - /url: /projects/analytics-performance
+            - generic [ref=e330]:
+              - generic [ref=e331]:
+                - generic [ref=e333]: A
+                - generic [ref=e335]:
+                  - text: View Case Study
+                  - img [ref=e336]
+                - generic [ref=e339]: Featured
+              - heading "Analytics & Performance System" [level=3] [ref=e340]
+              - paragraph [ref=e341]: Enterprise-grade analytics integration with 90+ mobile performance optimization.
+              - generic [ref=e342]:
+                - generic [ref=e343]: GA4
+                - generic [ref=e344]: GTM
+                - generic [ref=e345]: Web Vitals
+                - generic [ref=e346]: "+2"
+              - generic [ref=e347]:
+                - link [ref=e348]:
+                  - /url: https://github.com/ssani/performance-analytics
+                  - img [ref=e349]
+                - generic [ref=e352]: "2024"
+        - article [ref=e353]:
+          - link "U View Case Study Featured Ultimate 3D Portfolio A next-gen personal portfolio featuring hybrid architecture and immersive 3D. Next.js Three.js TypeScript +2 2024" [ref=e354] [cursor=pointer]:
+            - /url: /projects/ultimate-portfolio
+            - generic [ref=e355]:
+              - generic [ref=e356]:
+                - generic [ref=e358]: U
+                - generic [ref=e360]:
+                  - text: View Case Study
+                  - img [ref=e361]
+                - generic [ref=e364]: Featured
+              - heading "Ultimate 3D Portfolio" [level=3] [ref=e365]
+              - paragraph [ref=e366]: A next-gen personal portfolio featuring hybrid architecture and immersive 3D.
+              - generic [ref=e367]:
+                - generic [ref=e368]: Next.js
+                - generic [ref=e369]: Three.js
+                - generic [ref=e370]: TypeScript
+                - generic [ref=e371]: "+2"
+              - generic [ref=e372]:
+                - link [ref=e373]:
+                  - /url: https://github.com/ssani/ultimate-portfolio
+                  - img [ref=e374]
+                - link [ref=e377]:
+                  - /url: https://ssani.dev
+                  - img [ref=e378]
+                - generic [ref=e382]: "2024"
+    - generic [ref=e384]:
+      - generic [ref=e385]:
+        - generic [ref=e386]: Experience
+        - heading "My Journey" [level=2] [ref=e387]
+        - paragraph [ref=e388]: A timeline of my professional experience and education.
+      - generic [ref=e389]:
+        - generic [ref=e394]:
+          - generic [ref=e395]:
+            - img [ref=e397]
+            - generic [ref=e400]:
+              - img [ref=e401]
+              - text: 2023 - Present
+          - heading "Senior Frontend Developer" [level=3] [ref=e403]
+          - paragraph [ref=e404]: Tech Company
+          - paragraph [ref=e405]: Leading frontend development for enterprise applications. Building scalable React applications with TypeScript and implementing design systems.
+          - generic [ref=e406]:
+            - generic [ref=e407]: React
+            - generic [ref=e408]: TypeScript
+            - generic [ref=e409]: Next.js
+            - generic [ref=e410]: AWS
+        - generic [ref=e414]:
+          - generic [ref=e415]:
+            - img [ref=e417]
+            - generic [ref=e420]:
+              - img [ref=e421]
+              - text: 2021 - 2023
+          - heading "Full Stack Developer" [level=3] [ref=e423]
+          - paragraph [ref=e424]: Startup Inc
+          - paragraph [ref=e425]: Developed and maintained multiple web applications. Collaborated with design team to implement pixel-perfect UIs.
+          - generic [ref=e426]:
+            - generic [ref=e427]: Node.js
+            - generic [ref=e428]: React
+            - generic [ref=e429]: PostgreSQL
+            - generic [ref=e430]: Docker
+        - generic [ref=e434]:
+          - generic [ref=e435]:
+            - img [ref=e437]
+            - generic [ref=e440]:
+              - img [ref=e441]
+              - text: 2017 - 2021
+          - heading "Bachelor's in Computer Science" [level=3] [ref=e443]
+          - paragraph [ref=e444]: University Name
+          - paragraph [ref=e445]: Graduated with honors. Focused on software engineering, algorithms, and web technologies.
+          - generic [ref=e446]:
+            - generic [ref=e447]: Data Structures
+            - generic [ref=e448]: Algorithms
+            - generic [ref=e449]: Web Dev
+        - generic [ref=e453]:
+          - generic [ref=e454]:
+            - img [ref=e456]
+            - generic [ref=e459]:
+              - img [ref=e460]
+              - text: 2020 - 2021
+          - heading "Frontend Developer Intern" [level=3] [ref=e462]
+          - paragraph [ref=e463]: Agency XYZ
+          - paragraph [ref=e464]: Built responsive websites for various clients. Learned modern frontend practices and version control.
+          - generic [ref=e465]:
+            - generic [ref=e466]: JavaScript
+            - generic [ref=e467]: CSS
+            - generic [ref=e468]: Git
+            - generic [ref=e469]: Figma
+    - generic [ref=e471]:
+      - generic [ref=e472]:
+        - generic [ref=e473]: Get In Touch
+        - heading "Let's Build Something Great" [level=2] [ref=e474]
+        - paragraph [ref=e475]: Whether you need a high-performance website, an AI integration, or just want to discuss the latest in tech—I'm always open to new opportunities.
+      - generic [ref=e476]:
+        - generic [ref=e477]:
+          - generic [ref=e478]:
+            - heading "Contact Information" [level=3] [ref=e479]
+            - paragraph [ref=e480]: Open to freelance opportunities, consulting, and full-time roles. Let's turn your vision into reality.
+          - generic [ref=e481]:
+            - generic [ref=e482]:
+              - img [ref=e484]
+              - generic [ref=e487]:
+                - paragraph [ref=e488]: Email
+                - link "contact@ssani.dev" [ref=e489] [cursor=pointer]:
+                  - /url: mailto:contact@ssani.dev
+            - generic [ref=e490]:
+              - img [ref=e492]
+              - generic [ref=e494]:
+                - paragraph [ref=e495]: Phone
+                - link "+1 (555) 000-0000" [ref=e496] [cursor=pointer]:
+                  - /url: tel:+15550000000
+            - generic [ref=e497]:
+              - img [ref=e499]
+              - generic [ref=e502]:
+                - paragraph [ref=e503]: Location
+                - paragraph [ref=e504]: Global / Remote
+          - generic [ref=e508]:
+            - paragraph [ref=e509]: Ready to Start?
+            - paragraph [ref=e510]: Let's create the extraordinary.
+        - generic [ref=e512]:
+          - generic [ref=e513]:
+            - generic [ref=e514]: Name
+            - textbox "Name" [ref=e515]:
+              - /placeholder: Your Name
+          - generic [ref=e516]:
+            - generic [ref=e517]: Email
+            - textbox "Email" [ref=e518]:
+              - /placeholder: you@company.com
+          - generic [ref=e519]:
+            - generic [ref=e520]: Message
+            - textbox "Message" [ref=e521]:
+              - /placeholder: Tell me about your project...
+          - button "Send Message" [ref=e522]:
+            - generic [ref=e524]:
+              - img [ref=e525]
+              - text: Send Message
+  - contentinfo [ref=e528]:
+    - generic [ref=e530]:
+      - generic [ref=e531]:
+        - link "Portfolio" [ref=e532] [cursor=pointer]:
+          - /url: "#home"
+        - paragraph [ref=e533]: © 2025 S. Sani. All rights reserved.
+      - navigation [ref=e534]:
+        - link "Home" [ref=e535] [cursor=pointer]:
+          - /url: "#home"
+        - link "About" [ref=e536] [cursor=pointer]:
+          - /url: "#about"
+        - link "Projects" [ref=e537] [cursor=pointer]:
+          - /url: "#projects"
+        - link "Contact" [ref=e538] [cursor=pointer]:
+          - /url: "#contact"
+      - generic [ref=e539]:
+        - link "GitHub" [ref=e540] [cursor=pointer]:
+          - /url: https://github.com/ssani
+          - img [ref=e541]
+        - link "LinkedIn" [ref=e544] [cursor=pointer]:
+          - /url: https://linkedin.com/in/ssani
+          - img [ref=e545]
+        - link "Email" [ref=e549] [cursor=pointer]:
+          - /url: mailto:contact@ssani.dev
+          - img [ref=e550]
+  - alert [ref=e553]
+```

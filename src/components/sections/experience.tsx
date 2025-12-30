@@ -1,0 +1,152 @@
+"use client";
+
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import { Briefcase, GraduationCap, Calendar } from "lucide-react";
+import { GradientText } from "@/components/ui/text-animations";
+
+const experiences = [
+    {
+        type: "work",
+        title: "Senior Frontend Developer",
+        company: "Tech Company",
+        period: "2023 - Present",
+        description:
+            "Leading frontend development for enterprise applications. Building scalable React applications with TypeScript and implementing design systems.",
+        skills: ["React", "TypeScript", "Next.js", "AWS"],
+    },
+    {
+        type: "work",
+        title: "Full Stack Developer",
+        company: "Startup Inc",
+        period: "2021 - 2023",
+        description:
+            "Developed and maintained multiple web applications. Collaborated with design team to implement pixel-perfect UIs.",
+        skills: ["Node.js", "React", "PostgreSQL", "Docker"],
+    },
+    {
+        type: "education",
+        title: "Bachelor's in Computer Science",
+        company: "University Name",
+        period: "2017 - 2021",
+        description:
+            "Graduated with honors. Focused on software engineering, algorithms, and web technologies.",
+        skills: ["Data Structures", "Algorithms", "Web Dev"],
+    },
+    {
+        type: "work",
+        title: "Frontend Developer Intern",
+        company: "Agency XYZ",
+        period: "2020 - 2021",
+        description:
+            "Built responsive websites for various clients. Learned modern frontend practices and version control.",
+        skills: ["JavaScript", "CSS", "Git", "Figma"],
+    },
+];
+
+export function ExperienceSection() {
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+    return (
+        <section id="experience" className="section bg-background-secondary/30" ref={ref}>
+            <div className="container mx-auto px-6">
+                {/* Section Header */}
+                <motion.div
+                    initial={{ opacity: 0, y: 40 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.6 }}
+                    className="text-center mb-16"
+                >
+                    <span className="text-sm font-medium text-accent-1 uppercase tracking-widest mb-4 block">
+                        Experience
+                    </span>
+                    <h2 className="heading-lg mb-6">
+                        My <GradientText>Journey</GradientText>
+                    </h2>
+                    <p className="text-lg text-foreground-muted max-w-2xl mx-auto">
+                        A timeline of my professional experience and education.
+                    </p>
+                </motion.div>
+
+                {/* Timeline */}
+                <div className="max-w-4xl mx-auto relative">
+                    {/* Timeline Line */}
+                    <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-accent-1 via-accent-2 to-accent-3 transform md:-translate-x-1/2" />
+
+                    {/* Timeline Items */}
+                    {experiences.map((exp, i) => (
+                        <motion.div
+                            key={`${exp.title}-${i}`}
+                            initial={{ opacity: 0, x: i % 2 === 0 ? -50 : 50 }}
+                            animate={isInView ? { opacity: 1, x: 0 } : {}}
+                            transition={{ duration: 0.5, delay: i * 0.15 }}
+                            className={`relative flex items-center mb-12 ${i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+                                }`}
+                        >
+                            {/* Timeline Dot */}
+                            <div className="absolute left-0 md:left-1/2 w-4 h-4 rounded-full bg-gradient-to-r from-accent-1 to-accent-2 transform -translate-x-1/2 z-10 ring-4 ring-background" />
+
+                            {/* Content Card */}
+                            <div
+                                className={`ml-8 md:ml-0 md:w-[calc(50%-2rem)] ${i % 2 === 0 ? "md:pr-8 md:text-right" : "md:pl-8"
+                                    }`}
+                            >
+                                <motion.div
+                                    whileHover={{ y: -4 }}
+                                    className="card"
+                                >
+                                    {/* Icon & Period */}
+                                    <div
+                                        className={`flex items-center gap-2 mb-3 ${i % 2 === 0 ? "md:justify-end" : ""
+                                            }`}
+                                    >
+                                        <div className="p-2 rounded-lg bg-accent-1/10">
+                                            {exp.type === "work" ? (
+                                                <Briefcase className="w-4 h-4 text-accent-1" />
+                                            ) : (
+                                                <GraduationCap className="w-4 h-4 text-accent-2" />
+                                            )}
+                                        </div>
+                                        <span className="text-sm text-foreground-muted flex items-center gap-1">
+                                            <Calendar className="w-3 h-3" />
+                                            {exp.period}
+                                        </span>
+                                    </div>
+
+                                    {/* Title & Company */}
+                                    <h3 className="text-lg font-semibold mb-1">{exp.title}</h3>
+                                    <p className="text-accent-1 text-sm font-medium mb-3">
+                                        {exp.company}
+                                    </p>
+
+                                    {/* Description */}
+                                    <p className="text-foreground-muted text-sm mb-4">
+                                        {exp.description}
+                                    </p>
+
+                                    {/* Skills */}
+                                    <div
+                                        className={`flex flex-wrap gap-2 ${i % 2 === 0 ? "md:justify-end" : ""
+                                            }`}
+                                    >
+                                        {exp.skills.map((skill) => (
+                                            <span
+                                                key={skill}
+                                                className="px-2 py-1 text-xs font-medium text-foreground-muted bg-glass-border/50 rounded"
+                                            >
+                                                {skill}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </motion.div>
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
+}
+
+export default ExperienceSection;
