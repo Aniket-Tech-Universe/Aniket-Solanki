@@ -6,17 +6,22 @@ import { Github, Linkedin, Twitter, Mail, Heart } from "lucide-react";
 
 const socialLinks = [
     {
-        icon: Github, href: "https://github.com/ssani",
+        icon: Github, href: "https://github.com/Aniket-Tech-Universe",
         label: "GitHub",
     },
     {
         icon: Linkedin,
-        href: "https://linkedin.com/in/ssani",
+        href: "https://www.linkedin.com/in/aniket-solanki-463449360/",
         label: "LinkedIn",
     },
     {
+        icon: Twitter,
+        href: "https://x.com/ANIKET_SOLANKI1",
+        label: "Twitter",
+    },
+    {
         icon: Mail,
-        href: "mailto:contact@ssani.dev",
+        href: "mailto:hello@aniket.dev",
         label: "Email",
     },
 ];
@@ -38,10 +43,10 @@ export function Footer() {
                     {/* Logo & Copyright */}
                     <div className="text-center md:text-left">
                         <Link href="#home" className="text-xl font-bold gradient-text mb-2 block">
-                            Portfolio
+                            AS.
                         </Link>
                         <p className="text-foreground-muted text-sm">
-                            © {new Date().getFullYear()} S. Sani. All rights reserved.
+                            © {currentYear} Aniket Solanki. All rights reserved.
                         </p>
                     </div>
 

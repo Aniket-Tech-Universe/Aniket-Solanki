@@ -70,6 +70,7 @@ export function MagneticButton({
             href={href}
             onClick={onClick}
             disabled={disabled}
+            aria-label={ariaLabel}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
             animate={{ x: position.x, y: position.y }}
