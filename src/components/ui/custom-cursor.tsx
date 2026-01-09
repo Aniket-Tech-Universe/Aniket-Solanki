@@ -47,13 +47,16 @@ export function CustomCursor() {
         };
     }, [mouseX, mouseY, isVisible]);
 
-    // Render nothing on server or if hidden logic applies (but we use CSS for mobile hiding)
+    // Hide on mobile (touch devices) and until first movement
+    if (typeof window !== "undefined" && window.matchMedia("(hover: none)").matches) {
+        return null;
+    }
 
     return (
         <div className="pointer-events-none fixed inset-0 z-[9999] hidden md:block">
-            {/* Main Cursor Dot - follows mouse exactly */}
+            {/* Main Cursor Dot */}
             <motion.div
-                className="fixed top-0 left-0 w-3 h-3 bg-white rounded-full mix-blend-difference"
+                className="cursor-dot fixed top-0 left-0 w-2 h-2 bg-white rounded-full mix-blend-difference z-[9999]"
                 style={{
                     x: mouseX,
                     y: mouseY,
@@ -63,9 +66,9 @@ export function CustomCursor() {
                 }}
             />
 
-            {/* Trailing Ring - follows with spring physics */}
+            {/* Trailing Ring */}
             <motion.div
-                className="fixed top-0 left-0 border border-white rounded-full mix-blend-difference"
+                className="cursor-ring fixed top-0 left-0 w-8 h-8 border border-white rounded-full mix-blend-difference z-[9998]"
                 style={{
                     x: cursorX,
                     y: cursorY,
@@ -74,14 +77,14 @@ export function CustomCursor() {
                     translateY: "-50%",
                 }}
                 animate={{
-                    width: isHovering ? 48 : 24,
-                    height: isHovering ? 48 : 24,
+                    scale: isHovering ? 1.5 : 1,
                     backgroundColor: isHovering ? "rgba(255, 255, 255, 0.1)" : "transparent",
+                    borderColor: isHovering ? "transparent" : "white"
                 }}
                 transition={{
-                    width: { duration: 0.2 },
-                    height: { duration: 0.2 },
-                    backgroundColor: { duration: 0.2 }
+                    scale: { duration: 0.2, type: "spring", stiffness: 300, damping: 20 },
+                    backgroundColor: { duration: 0.2 },
+                    borderColor: { duration: 0.2 }
                 }}
             />
         </div>
