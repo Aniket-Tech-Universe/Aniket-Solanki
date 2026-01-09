@@ -8,39 +8,39 @@ import { GradientText } from "@/components/ui/text-animations";
 const experiences = [
     {
         type: "work",
-        title: "Senior Frontend Developer",
-        company: "Tech Company",
-        period: "2023 - Present",
+        title: "Creative Technologist",
+        company: "AXORACO Digital",
+        period: "2024 - Present",
         description:
-            "Leading frontend development for enterprise applications. Building scalable React applications with TypeScript and implementing design systems.",
-        skills: ["React", "TypeScript", "Next.js", "AWS"],
+            "Leading creative development for enterprise clients. Building immersive 3D web experiences and AI-powered applications with cutting-edge technologies.",
+        skills: ["Next.js", "Three.js", "OpenAI", "TypeScript"],
     },
     {
         type: "work",
         title: "Full Stack Developer",
-        company: "Startup Inc",
-        period: "2021 - 2023",
+        company: "TechVentures",
+        period: "2022 - 2024",
         description:
-            "Developed and maintained multiple web applications. Collaborated with design team to implement pixel-perfect UIs.",
-        skills: ["Node.js", "React", "PostgreSQL", "Docker"],
+            "Developed high-performance web applications and voice AI systems. Integrated Twilio and OpenAI APIs for automated customer service solutions.",
+        skills: ["Node.js", "React", "Twilio", "PostgreSQL"],
     },
     {
         type: "education",
-        title: "Bachelor's in Computer Science",
-        company: "University Name",
-        period: "2017 - 2021",
+        title: "B.Tech in Computer Science",
+        company: "Institute of Technology",
+        period: "2018 - 2022",
         description:
-            "Graduated with honors. Focused on software engineering, algorithms, and web technologies.",
-        skills: ["Data Structures", "Algorithms", "Web Dev"],
+            "Graduated with distinction. Specialized in artificial intelligence, web technologies, and software architecture.",
+        skills: ["Data Structures", "AI/ML", "System Design"],
     },
     {
         type: "work",
-        title: "Frontend Developer Intern",
-        company: "Agency XYZ",
-        period: "2020 - 2021",
+        title: "Frontend Developer",
+        company: "Digital Agency",
+        period: "2021 - 2022",
         description:
-            "Built responsive websites for various clients. Learned modern frontend practices and version control.",
-        skills: ["JavaScript", "CSS", "Git", "Figma"],
+            "Built responsive websites and web applications for clients across various industries. Implemented modern UI/UX best practices.",
+        skills: ["JavaScript", "React", "Tailwind CSS", "Figma"],
     },
 ];
 

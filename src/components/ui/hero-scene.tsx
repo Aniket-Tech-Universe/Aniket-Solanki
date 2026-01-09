@@ -1,9 +1,11 @@
+"use client";
+
 import { useRef, useMemo, useState, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Points, PointMaterial, PerformanceMonitor } from "@react-three/drei";
+import { Points, PointMaterial } from "@react-three/drei";
 import * as THREE from "three";
 
-function ParticleField({ count = 2000 }) {
+function ParticleField({ count = 1500 }: { count?: number }) {
     const ref = useRef<THREE.Points>(null);
 
     const positions = useMemo(() => {
@@ -24,7 +26,7 @@ function ParticleField({ count = 2000 }) {
     });
 
     return (
-        <Points ref={ref} positions={positions} stride={3} frustumCulled={false}>
+        <Points ref={ref} positions={positions} stride={3} frustumCulled>
             <PointMaterial
                 transparent
                 color="#7c3aed"
@@ -73,6 +75,7 @@ function TorusKnot() {
 
     return (
         <mesh ref={meshRef} position={[-2.5, 0.5, -3]}>
+            {/* Restored to original complexity */}
             <torusKnotGeometry args={[0.6, 0.2, 100, 16]} />
             <meshBasicMaterial
                 color="#06b6d4"
@@ -85,14 +88,21 @@ function TorusKnot() {
 }
 
 export function HeroScene() {
-    const [dpr, setDpr] = useState(1);
-    const [particleCount, setParticleCount] = useState(2000);
+    const [particleCount, setParticleCount] = useState(1500);
+    const [isMobile, setIsMobile] = useState(false);
 
-    // Initial mobile check
     useEffect(() => {
-        if (typeof window !== "undefined" && window.innerWidth < 768) {
-            setParticleCount(1000);
-        }
+        if (typeof window === "undefined") return;
+
+        const checkDevice = () => {
+            const mobile = window.innerWidth < 768;
+            setIsMobile(mobile);
+            setParticleCount(mobile ? 800 : 1500);
+        };
+
+        checkDevice();
+        window.addEventListener("resize", checkDevice);
+        return () => window.removeEventListener("resize", checkDevice);
     }, []);
 
     return (
@@ -100,11 +110,13 @@ export function HeroScene() {
             <Canvas
                 camera={{ position: [0, 0, 5], fov: 60 }}
                 style={{ background: "transparent" }}
-                gl={{ alpha: true, antialias: true }}
-                dpr={dpr}
+                gl={{
+                    alpha: true,
+                    antialias: !isMobile,
+                    powerPreference: "default",
+                }}
+                dpr={[1, isMobile ? 1 : 1.5]}
             >
-                <PerformanceMonitor onIncline={() => setDpr(2)} onDecline={() => setDpr(1)} />
-                <ambientLight intensity={0.5} />
                 <ParticleField count={particleCount} />
                 <FloatingGeometry />
                 <TorusKnot />

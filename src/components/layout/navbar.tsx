@@ -12,6 +12,7 @@ const navLinks = [
     { name: "Skills", href: "#skills" },
     { name: "Projects", href: "#projects" },
     { name: "Experience", href: "#experience" },
+    { name: "Testimonials", href: "#testimonials" },
     { name: "Contact", href: "#contact" },
 ];
 
@@ -64,7 +65,7 @@ export function Navbar() {
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                         >
-                            Portfolio
+                            AS<span className="text-foreground-muted">.</span>
                         </motion.span>
                     </Link>
 

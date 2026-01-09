@@ -24,6 +24,39 @@ export interface Project {
 
 export const projects: Project[] = [
     {
+        id: "omni-agent",
+        title: "OmniAgent Neural Interface",
+        shortDescription:
+            "A visually immersive 3D AI agent interface featuring real-time neural network visualization.",
+        fullDescription:
+            "The flagship project of the portfolio. OmniAgent represents the convergence of high-performance WebGL, generative AI, and futuristic UI design. It features a reactive 3D neural core that responds to user input, simulating a sentient digital entity. Built with Next.js 15, React Three Fiber, and a custom physics engine.",
+        category: "ai",
+        featured: true,
+        image: "/projects/dashboard.jpg",
+        tags: ["Next.js 15", "R3F", "WebGL", "GenAI", "Cyberpunk"],
+        github: "https://github.com/ssani/omni-agent",
+        live: "https://omni-agent.demo.com",
+        year: "2024",
+        role: "Lead Creative Technologist",
+        duration: "In Development",
+        challenge:
+            "Most AI interfaces are static and boring text boxes. I wanted to create an experience that feels 'alive'—where the interface itself communicates intelligence through motion and light, rather than just text.",
+        solution:
+            "Implemented a custom particle system using Maath and Three.js to generate a 'breathing' neural sphere. Integrated Framer Motion for HUD transitions and a simulated Node.js backend for response latency modeling.",
+        results: [
+            "60FPS 3D Interaction on mobile",
+            "Procedural Particle Systems",
+            "Glassmorphic HUD Design",
+        ],
+        techStack: [
+            { name: "Next.js 15", description: "App Router Framework" },
+            { name: "React Three Fiber", description: "3D Scene Management" },
+            { name: "Maath", description: "3D Math Library" },
+            { name: "Zustand", description: "State Management" },
+        ],
+        screenshots: [],
+    },
+    {
         id: "ai-voice-assistant",
         title: "Enterprise AI Voice Assistant",
         shortDescription:
@@ -94,35 +127,36 @@ export const projects: Project[] = [
         screenshots: [],
     },
     {
-        id: "analytics-performance",
-        title: "Analytics & Performance System",
+        id: "api-security-scanner",
+        title: "Enterprise API Security Scanner",
         shortDescription:
-            "Enterprise-grade analytics integration with 90+ mobile performance optimization.",
+            "A comprehensive platform for discovering, validating, and tracking unsecured API keys across codebases.",
         fullDescription:
-            "A comprehensive overhaul of web performance and data tracking infrastructure. This project involved deep-dive auditing of Core Web Vitals, implementation of Google Analytics 4 (GA4) via Google Tag Manager (GTM), and a strategic refactoring of critical rendering paths to achieve near-perfect mobile performance scores.",
-        category: "web",
+            "A mission-critical security tool designed to identify exposed API credentials in public repositories. Features a high-performance .NET 9 backend with CQRS architecture, a Next.js frontend for real-time monitoring via SignalR, and an automated verification bot engine. Deployed via Docker Compose with PostgreSQL persistence.",
+        category: "app",
         featured: true,
         image: "/projects/dashboard.jpg",
-        tags: ["GA4", "GTM", "Web Vitals", "SEO", "Optimization"],
-        github: "https://github.com/ssani/performance-analytics",
+        tags: [".NET 9", "Next.js", "Docker", "SignalR", "PostgreSQL"],
+        github: "https://github.com/TSCarterJr/UnsecuredAPIKeys-OpenSource",
         year: "2024",
-        role: "Performance Engineer",
-        duration: "1 month",
+        role: "Full Stack Engineer",
+        duration: "3 months",
         challenge:
-            "The platform was suffering from poor mobile conversion rates due to slow load times (LCP > 4s) and lacked granular user behavior data. The marketing team was flying blind, and the engineering team needed a roadmap to fix the technical debt affecting performance.",
+            "DevOps teams often leak credentials in CI/CD logs or public repos. Manual detection is slow and error-prone. The challenge was to build a system that could scan millions of lines of code in real-time and verify key validity without triggering rate limits.",
         solution:
-            "Conducted a complete performance audit identifying main-thread blockers and layout shifts. Implemented critical CSS inlining, font optimization, and intelligent code-splitting. Deployed a robust GTM container with custom event tracking for precise user journey mapping without impacting load speed.",
+            "Engineered a distributed scanning architecture. The Scraper Bot feeds potential keys into a localized queue, which the Verifier Bot processes using a plugin-based provider system. Used SignalR to push live alerts to the dashboard instantly. Implemented comprehensive rate-limiting and user-managed overrides.",
         results: [
-            "Mobile Performance score improved from 45 to 92",
-            "LCP reduced to 1.2s (top 10 percentile)",
-            "Captured 30% more user interaction data",
-            "Improved organic SEO ranking keywords by 25%",
+            "Scans 100+ repositories per minute",
+            "Real-time alerts via WebSocket/SignalR",
+            "Modular 'Provider' architecture for easy extension",
+            "Full Docker containerization for one-click deploy",
         ],
         techStack: [
-            { name: "Google Analytics 4", description: "User behavior tracking" },
-            { name: "Google Tag Manager", description: "Tag deployment system" },
-            { name: "Lighthouse CI", description: "Automated performance testing" },
-            { name: "Next.js Script", description: "Optimized script loading" },
+            { name: ".NET 9 WebAPI", description: "High-performance Backend" },
+            { name: "Next.js 14", description: "Real-time Dashboard UI" },
+            { name: "PostgreSQL & EF Core", description: "Relational Data Persistence" },
+            { name: "SignalR", description: "Live WebSocket Communication" },
+            { name: "Docker Compose", description: "Microservices Orchestration" },
         ],
         screenshots: [],
     },

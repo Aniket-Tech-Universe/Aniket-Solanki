@@ -11,29 +11,29 @@
   --background-secondary: #0a0a1a;
   --foreground: #f0f0f5;
   --foreground-muted: #8888a0;
-  
+
   /* Accent Gradient */
   --accent-1: #7c3aed;
   --accent-2: #06b6d4;
   --accent-3: #ec4899;
-  
+
   /* Glass Effect */
   --glass: rgba(255, 255, 255, 0.03);
   --glass-border: rgba(255, 255, 255, 0.08);
-  
+
   /* Shadows */
   --glow-primary: 0 0 60px rgba(124, 58, 237, 0.3);
   --glow-secondary: 0 0 40px rgba(6, 182, 212, 0.2);
-  
+
   /* Typography */
   --font-display: 'Inter', system-ui, -apple-system, sans-serif;
   --font-body: 'Inter', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
-  
+
   /* Spacing */
   --section-padding: clamp(4rem, 10vw, 8rem);
   --container-max: 1400px;
-  
+
   /* Animations */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
@@ -58,7 +58,9 @@
    BASE STYLES
    ============================================ */
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -66,6 +68,8 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Smooth scrolling is handled by Lenis, disable native smooth scroll */
+  scroll-behavior: auto;
 }
 
 body {
@@ -75,6 +79,11 @@ body {
   line-height: 1.6;
   min-height: 100vh;
   overflow-x: hidden;
+  /* GPU acceleration hints for smoother scrolling */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 /* Selection */
@@ -116,16 +125,23 @@ body {
   height: 150%;
   top: -25%;
   left: -25%;
-  background: 
-    radial-gradient(ellipse 80% 50% at 20% 20%, rgba(124, 58, 237, 0.15), transparent 50%),
-    radial-gradient(ellipse 60% 40% at 80% 80%, rgba(6, 182, 212, 0.1), transparent 50%),
-    radial-gradient(ellipse 50% 60% at 50% 50%, rgba(236, 72, 153, 0.08), transparent 50%);
-  animation: gradient-rotate 20s linear infinite;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(124, 58, 237, 0.15), transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(6, 182, 212, 0.1), transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.08), transparent 50%);
+  animation: gradient-pulse 10s ease-in-out infinite alternate;
 }
 
-@keyframes gradient-rotate {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+@keyframes gradient-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
 }
 
 /* Noise overlay */
@@ -170,8 +186,15 @@ body {
 }
 
 @keyframes gradient-shift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 /* ============================================
@@ -219,7 +242,7 @@ body {
   cursor: pointer;
   overflow: hidden;
   transition: transform var(--duration-fast) var(--ease-out-expo),
-              box-shadow var(--duration-normal) var(--ease-out-quart);
+    box-shadow var(--duration-normal) var(--ease-out-quart);
 }
 
 .magnetic-btn::before {
@@ -325,7 +348,7 @@ body {
   border-radius: 20px;
   padding: 2rem;
   transition: transform var(--duration-normal) var(--ease-out-expo),
-              border-color var(--duration-normal);
+    border-color var(--duration-normal);
 }
 
 .card:hover {
@@ -367,6 +390,7 @@ body {
 
 /* Hide custom cursor on touch devices */
 @media (hover: none) {
+
   .cursor-dot,
   .cursor-ring {
     display: none;
@@ -378,16 +402,22 @@ body {
    ============================================ */
 
 @keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slide-up {
-  from { 
+  from {
     opacity: 0;
     transform: translateY(40px);
   }
-  to { 
+
+  to {
     opacity: 1;
     transform: translateY(0);
   }
@@ -398,6 +428,7 @@ body {
     opacity: 0;
     transform: scale(0.95);
   }
+
   to {
     opacity: 1;
     transform: scale(1);
@@ -417,11 +448,25 @@ body {
 }
 
 /* Stagger delays */
-.delay-100 { animation-delay: 100ms; }
-.delay-200 { animation-delay: 200ms; }
-.delay-300 { animation-delay: 300ms; }
-.delay-400 { animation-delay: 400ms; }
-.delay-500 { animation-delay: 500ms; }
+.delay-100 {
+  animation-delay: 100ms;
+}
+
+.delay-200 {
+  animation-delay: 200ms;
+}
+
+.delay-300 {
+  animation-delay: 300ms;
+}
+
+.delay-400 {
+  animation-delay: 400ms;
+}
+
+.delay-500 {
+  animation-delay: 500ms;
+}
 
 /* ============================================
    RESPONSIVE
@@ -431,8 +476,197 @@ body {
   :root {
     --section-padding: clamp(3rem, 8vw, 5rem);
   }
-  
+
   .container {
     padding: 0 1.25rem;
+  }
+
+  /* Reduce motion on mobile for performance */
+  .gradient-bg::before {
+    animation-duration: 40s;
+  }
+
+  /* Ensure touch targets are at least 44x44 */
+  .magnetic-btn,
+  button,
+  a {
+    min-height: 44px;
+  }
+}
+
+/* ============================================
+   ADVANCED VISUAL EFFECTS
+   ============================================ */
+
+/* Floating Animation */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes float-delayed {
+
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-15px) rotate(2deg);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float-delayed 4s ease-in-out infinite;
+  animation-delay: 0.5s;
+}
+
+/* Shimmer Effect */
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.1) 50%,
+      transparent 100%);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Animated Gradient Border */
+.gradient-border {
+  position: relative;
+  background: var(--background);
+  border-radius: 20px;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(45deg,
+      var(--accent-1),
+      var(--accent-2),
+      var(--accent-3),
+      var(--accent-1));
+  background-size: 300% 300%;
+  border-radius: inherit;
+  z-index: -1;
+  animation: gradient-rotate 4s linear infinite;
+}
+
+/* Pulse Glow */
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(124, 58, 237, 0.3),
+      0 0 40px rgba(124, 58, 237, 0.1);
+  }
+
+  50% {
+    box-shadow: 0 0 30px rgba(124, 58, 237, 0.5),
+      0 0 60px rgba(124, 58, 237, 0.2);
+  }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Section Divider */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg,
+      transparent 0%,
+      var(--accent-1) 20%,
+      var(--accent-2) 50%,
+      var(--accent-3) 80%,
+      transparent 100%);
+  opacity: 0.3;
+}
+
+/* Text Glow */
+.text-glow {
+  text-shadow: 0 0 10px rgba(124, 58, 237, 0.5),
+    0 0 20px rgba(124, 58, 237, 0.3),
+    0 0 30px rgba(124, 58, 237, 0.2);
+}
+
+/* Enhanced Card Hover */
+.card-premium {
+  position: relative;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 2rem;
+  transition: all 0.4s var(--ease-out-expo);
+  overflow: hidden;
+}
+
+.card-premium::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.05),
+      transparent);
+  transition: left 0.5s ease;
+}
+
+.card-premium:hover::before {
+  left: 100%;
+}
+
+.card-premium:hover {
+  transform: translateY(-8px);
+  border-color: rgba(124, 58, 237, 0.4);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3),
+    0 0 40px rgba(124, 58, 237, 0.1);
+}
+
+/* Backdrop blur enhancement for older Safari */
+@supports not (backdrop-filter: blur(20px)) {
+  .glass {
+    background: rgba(10, 10, 26, 0.95);
+  }
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .gradient-bg::before {
+    animation: none;
   }
 }

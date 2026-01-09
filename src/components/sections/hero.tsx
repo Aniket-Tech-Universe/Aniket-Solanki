@@ -13,10 +13,10 @@ const HeroScene = dynamic(() => import("@/components/ui/hero-scene"), {
 });
 
 const socialLinks = [
-    { icon: Github, href: "https://github.com/ssani", label: "GitHub" },
-    { icon: Linkedin, href: "https://linkedin.com/in/ssani", label: "LinkedIn" },
-    { icon: Twitter, href: "https://twitter.com/ssani_dev", label: "Twitter" },
-    { icon: Mail, href: "mailto:contact@ssani.dev", label: "Email" },
+    { icon: Github, href: "https://github.com/Aniket-Tech-Universe", label: "GitHub" },
+    { icon: Linkedin, href: "https://www.linkedin.com/in/aniket-solanki-463449360/", label: "LinkedIn" },
+    { icon: Twitter, href: "https://x.com/ANIKET_SOLANKI1", label: "Twitter" },
+    { icon: Mail, href: "mailto:hello@aniket.dev", label: "Email" },
 ];
 
 export function HeroSection() {

@@ -14,13 +14,13 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://ssani.dev"),
+  metadataBase: new URL("https://aniket-solanki.vercel.app"),
   title: {
-    default: "Ultimate Portfolio | Developer & Designer",
-    template: "%s | Ultimate Portfolio",
+    default: "Aniket Solanki | Creative Technologist & AI Specialist",
+    template: "%s | Aniket Solanki",
   },
   description:
-    "A stunning portfolio showcasing exceptional digital experiences, creative solutions, and cutting-edge web development.",
+    "A stunning portfolio showcasing exceptional digital experiences, creative solutions, and cutting-edge web development with AI integration.",
   keywords: [
     "portfolio",
     "developer",
@@ -30,24 +30,26 @@ export const metadata: Metadata = {
     "web development",
     "frontend",
     "full-stack",
+    "AI",
+    "creative technologist",
   ],
-  authors: [{ name: "S. Sani" }],
-  creator: "S. Sani",
+  authors: [{ name: "Aniket Solanki" }],
+  creator: "Aniket Solanki",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://ssani.dev",
-    title: "Ultimate Portfolio | Developer & Designer",
+    url: "https://aniket-solanki.vercel.app",
+    title: "Aniket Solanki | Creative Technologist & AI Specialist",
     description:
-      "A stunning portfolio showcasing exceptional digital experiences.",
-    siteName: "Ultimate Portfolio",
+      "A stunning portfolio showcasing exceptional digital experiences and AI-powered applications.",
+    siteName: "Aniket Solanki Portfolio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ultimate Portfolio | Developer & Designer",
+    title: "Aniket Solanki | Creative Technologist & AI Specialist",
     description:
       "A stunning portfolio showcasing exceptional digital experiences.",
-    creator: "@ssani_dev",
+    creator: "@ANIKET_SOLANKI1",
   },
   robots: {
     index: true,

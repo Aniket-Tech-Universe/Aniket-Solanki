@@ -2,29 +2,25 @@
 
 import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import { Send, Mail, MapPin, Phone, CheckCircle, Loader2 } from "lucide-react";
+import { Send, Mail, MapPin, CheckCircle, Loader2, AlertCircle, Download } from "lucide-react";
 import { GradientText } from "@/components/ui/text-animations";
 import { MagneticButton } from "@/components/ui/magnetic-button";
 import { cn } from "@/lib/utils";
+
+// Web3Forms API key - get yours free at https://web3forms.com/
+const WEB3FORMS_KEY = "18610819-ed49-43b4-8ac1-056fdcfb92f6";
 
 const contactInfo = [
     {
         icon: Mail,
         label: "Email",
-        value: "contact@ssani.dev",
-        href: "mailto:contact@ssani.dev",
-    },
-    {
-        icon: Phone,
-        label: "Phone",
-        value: "+1 (555) 000-0000",
-        href: "tel:+15550000000",
-        // Replace with your real phone if you want
+        value: "hello@aniket.dev",
+        href: "mailto:hello@aniket.dev",
     },
     {
         icon: MapPin,
         label: "Location",
-        value: "Global / Remote",
+        value: "Available Worldwide",
         href: null,
     },
 ];
@@ -38,19 +34,45 @@ export function ContactSection() {
         message: "",
     });
     const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+    const [errorMessage, setErrorMessage] = useState("");
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setStatus("loading");
+        setErrorMessage("");
 
-        // Simulate form submission
-        // In production, connect this to a service like Resend or EmailJS
-        await new Promise((resolve) => setTimeout(resolve, 1500));
+        try {
+            // Use Web3Forms for serverless form submission
+            const response = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                },
+                body: JSON.stringify({
+                    access_key: WEB3FORMS_KEY,
+                    name: formState.name,
+                    email: formState.email,
+                    message: formState.message,
+                    from_name: "Portfolio Contact Form",
+                    subject: `New contact from ${formState.name}`,
+                }),
+            });
 
-        setStatus("success");
-        setFormState({ name: "", email: "", message: "" });
+            const result = await response.json();
 
-        setTimeout(() => setStatus("idle"), 3000);
+            if (result.success) {
+                setStatus("success");
+                setFormState({ name: "", email: "", message: "" });
+                setTimeout(() => setStatus("idle"), 5000);
+            } else {
+                throw new Error(result.message || "Something went wrong");
+            }
+        } catch (error) {
+            setStatus("error");
+            setErrorMessage(error instanceof Error ? error.message : "Failed to send message");
+            setTimeout(() => setStatus("idle"), 5000);
+        }
     };
 
     return (

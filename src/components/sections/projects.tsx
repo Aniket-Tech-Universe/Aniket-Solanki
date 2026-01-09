@@ -5,6 +5,7 @@ import { motion, useInView, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { ExternalLink, Github, ArrowUpRight } from "lucide-react";
 import { GradientText } from "@/components/ui/text-animations";
+import { TiltCard } from "@/components/ui/tilt-card";
 import { projects } from "@/lib/projects";
 import { cn } from "@/lib/utils";
 
@@ -78,87 +79,89 @@ export function ProjectsSection() {
                                 transition={{ duration: 0.4, delay: i * 0.1 }}
                                 className="group relative"
                             >
-                                <Link href={`/projects/${project.id}`} className="block">
-                                    <div className="card overflow-hidden hover:border-accent-1/50 transition-all duration-300">
-                                        {/* Project Image Placeholder */}
-                                        <div className="relative aspect-video mb-4 rounded-lg overflow-hidden bg-gradient-to-br from-accent-1/20 to-accent-2/20">
-                                            <div className="absolute inset-0 flex items-center justify-center">
-                                                <span className="text-4xl font-bold gradient-text opacity-30">
-                                                    {project.title.charAt(0)}
-                                                </span>
-                                            </div>
-
-                                            {/* View Project Overlay */}
-                                            <div className="absolute inset-0 bg-background/90 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                                                <span className="flex items-center gap-2 text-sm font-medium">
-                                                    View Case Study
-                                                    <ArrowUpRight size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                                                </span>
-                                            </div>
-
-                                            {/* Featured badge */}
-                                            {project.featured && (
-                                                <div className="absolute top-3 right-3 px-2 py-1 text-xs font-medium bg-accent-1 text-white rounded">
-                                                    Featured
+                                <TiltCard className="h-full">
+                                    <Link href={`/projects/${project.id}`} className="block h-full">
+                                        <div className="card-premium overflow-hidden h-full">
+                                            {/* Project Image Placeholder */}
+                                            <div className="relative aspect-video mb-4 rounded-lg overflow-hidden bg-gradient-to-br from-accent-1/20 to-accent-2/20">
+                                                <div className="absolute inset-0 flex items-center justify-center">
+                                                    <span className="text-4xl font-bold gradient-text opacity-30">
+                                                        {project.title.charAt(0)}
+                                                    </span>
                                                 </div>
-                                            )}
-                                        </div>
 
-                                        {/* Project Info */}
-                                        <h3 className="text-lg font-semibold mb-2 group-hover:text-accent-1 transition-colors">
-                                            {project.title}
-                                        </h3>
-                                        <p className="text-sm text-foreground-muted mb-4 line-clamp-2">
-                                            {project.shortDescription}
-                                        </p>
+                                                {/* View Project Overlay */}
+                                                <div className="absolute inset-0 bg-background/90 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                                    <span className="flex items-center gap-2 text-sm font-medium">
+                                                        View Case Study
+                                                        <ArrowUpRight size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                                                    </span>
+                                                </div>
 
-                                        {/* Tags */}
-                                        <div className="flex flex-wrap gap-2 mb-4">
-                                            {project.tags.slice(0, 3).map((tag) => (
-                                                <span
-                                                    key={tag}
-                                                    className="px-2 py-1 text-xs font-medium text-accent-1 bg-accent-1/10 rounded"
-                                                >
-                                                    {tag}
+                                                {/* Featured badge */}
+                                                {project.featured && (
+                                                    <div className="absolute top-3 right-3 px-2 py-1 text-xs font-medium bg-accent-1 text-white rounded pulse-glow">
+                                                        Featured
+                                                    </div>
+                                                )}
+                                            </div>
+
+                                            {/* Project Info */}
+                                            <h3 className="text-lg font-semibold mb-2 group-hover:text-accent-1 transition-colors">
+                                                {project.title}
+                                            </h3>
+                                            <p className="text-sm text-foreground-muted mb-4 line-clamp-2">
+                                                {project.shortDescription}
+                                            </p>
+
+                                            {/* Tags */}
+                                            <div className="flex flex-wrap gap-2 mb-4">
+                                                {project.tags.slice(0, 3).map((tag) => (
+                                                    <span
+                                                        key={tag}
+                                                        className="px-2 py-1 text-xs font-medium text-accent-1 bg-accent-1/10 rounded"
+                                                    >
+                                                        {tag}
+                                                    </span>
+                                                ))}
+                                                {project.tags.length > 3 && (
+                                                    <span className="px-2 py-1 text-xs font-medium text-foreground-muted bg-glass-border/50 rounded">
+                                                        +{project.tags.length - 3}
+                                                    </span>
+                                                )}
+                                            </div>
+
+                                            {/* Quick Links */}
+                                            <div className="flex items-center gap-3 pt-4 border-t border-glass-border">
+                                                {project.github && (
+                                                    <a
+                                                        href={project.github}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        onClick={(e) => e.stopPropagation()}
+                                                        className="text-foreground-muted hover:text-foreground transition-colors"
+                                                    >
+                                                        <Github size={18} />
+                                                    </a>
+                                                )}
+                                                {project.live && (
+                                                    <a
+                                                        href={project.live}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        onClick={(e) => e.stopPropagation()}
+                                                        className="text-foreground-muted hover:text-foreground transition-colors"
+                                                    >
+                                                        <ExternalLink size={18} />
+                                                    </a>
+                                                )}
+                                                <span className="ml-auto text-xs text-foreground-muted">
+                                                    {project.year}
                                                 </span>
-                                            ))}
-                                            {project.tags.length > 3 && (
-                                                <span className="px-2 py-1 text-xs font-medium text-foreground-muted bg-glass-border/50 rounded">
-                                                    +{project.tags.length - 3}
-                                                </span>
-                                            )}
+                                            </div>
                                         </div>
-
-                                        {/* Quick Links */}
-                                        <div className="flex items-center gap-3 pt-4 border-t border-glass-border">
-                                            {project.github && (
-                                                <a
-                                                    href={project.github}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    onClick={(e) => e.stopPropagation()}
-                                                    className="text-foreground-muted hover:text-foreground transition-colors"
-                                                >
-                                                    <Github size={18} />
-                                                </a>
-                                            )}
-                                            {project.live && (
-                                                <a
-                                                    href={project.live}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    onClick={(e) => e.stopPropagation()}
-                                                    className="text-foreground-muted hover:text-foreground transition-colors"
-                                                >
-                                                    <ExternalLink size={18} />
-                                                </a>
-                                            )}
-                                            <span className="ml-auto text-xs text-foreground-muted">
-                                                {project.year}
-                                            </span>
-                                        </div>
-                                    </div>
-                                </Link>
+                                    </Link>
+                                </TiltCard>
                             </motion.article>
                         ))}
                     </AnimatePresence>

@@ -18,25 +18,51 @@ export function SmoothScrollProvider({ children }: SmoothScrollProviderProps) {
 
         if (prefersReducedMotion) return;
 
-        // Initialize Lenis
+        // Initialize Lenis with optimized settings
         lenisRef.current = new Lenis({
-            duration: 1.2,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // easeOutExpo
+            duration: 1.0, // Slightly faster for snappier feel
+            easing: (t) => 1 - Math.pow(1 - t, 3), // Smoother easeOutCubic
             orientation: "vertical",
             gestureOrientation: "vertical",
             smoothWheel: true,
-            touchMultiplier: 2,
+            touchMultiplier: 1.5, // Reduced for less aggressive mobile scroll
+            wheelMultiplier: 1,
+            infinite: false,
         });
 
-        // Animation frame loop
+        // Animation frame loop with performance optimization
+        let rafId: number;
         function raf(time: number) {
             lenisRef.current?.raf(time);
-            requestAnimationFrame(raf);
+            rafId = requestAnimationFrame(raf);
         }
 
-        requestAnimationFrame(raf);
+        rafId = requestAnimationFrame(raf);
+
+        // Handle anchor link clicks for smooth scrolling
+        const handleAnchorClick = (e: MouseEvent) => {
+            const target = e.target as HTMLElement;
+            const anchor = target.closest('a[href^="#"]');
+            if (anchor) {
+                const href = anchor.getAttribute("href");
+                if (href && href !== "#") {
+                    const element = document.querySelector(href);
+                    if (element) {
+                        e.preventDefault();
+                        lenisRef.current?.scrollTo(element as HTMLElement, {
+                            offset: -80, // Offset for fixed header
+                            duration: 1.2,
+                        });
+                    }
+                }
+            }
+        };
+
+        document.addEventListener("click", handleAnchorClick);
 
         return () => {
+            cancelAnimationFrame(rafId);
+            document.removeEventListener("click", handleAnchorClick);
             lenisRef.current?.destroy();
         };
     }, []);
