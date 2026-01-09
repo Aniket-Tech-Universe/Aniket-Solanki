@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Github, Linkedin, Twitter, Mail, Heart } from "lucide-react";
 
 import { SOCIAL_LINKS } from "@/constants";
+import { Marquee } from "@/components/ui/marquee";
 
 const footerLinks = [
     { label: "Home", href: "#home" },
@@ -17,8 +18,18 @@ export function Footer() {
     const currentYear = new Date().getFullYear();
 
     return (
-        <footer className="py-12 border-t border-glass-border">
-            <div className="container mx-auto px-6">
+        <footer className="border-t border-glass-border overflow-hidden">
+            <div className="py-8 border-b border-glass-border/50">
+                <Marquee duration={20} className="[--gap:3rem]">
+                    <span className="text-6xl md:text-8xl font-bold uppercase tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-accent-1/20 to-accent-2/20">
+                        Let&apos;s Work Together
+                    </span>
+                    <span className="text-6xl md:text-8xl font-bold uppercase tracking-tighter text-foreground/5">
+                        •
+                    </span>
+                </Marquee>
+            </div>
+            <div className="container mx-auto px-6 py-12">
                 <div className="flex flex-col md:flex-row items-center justify-between gap-8">
                     {/* Logo & Copyright */}
                     <div className="text-center md:text-left">
