@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useScroll, useSpring } from "framer-motion";
 import { Briefcase, GraduationCap, Calendar } from "lucide-react";
 import { GradientText } from "@/components/ui/text-animations";
 
@@ -47,6 +47,15 @@ const experiences = [
 export function ExperienceSection() {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-100px" });
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: ["start end", "end end"]
+    });
+    const scaleY = useSpring(scrollYProgress, {
+        stiffness: 100,
+        damping: 30,
+        restDelta: 0.001
+    });
 
     return (
         <section id="experience" className="section bg-background-secondary/30" ref={ref}>
@@ -72,7 +81,12 @@ export function ExperienceSection() {
                 {/* Timeline */}
                 <div className="max-w-4xl mx-auto relative">
                     {/* Timeline Line */}
-                    <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-accent-1 via-accent-2 to-accent-3 transform md:-translate-x-1/2" />
+                    {/* Timeline Line */}
+                    <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-glass-border transform md:-translate-x-1/2" />
+                    <motion.div
+                        style={{ scaleY }}
+                        className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-accent-1 via-accent-2 to-accent-3 transform md:-translate-x-1/2 origin-top"
+                    />
 
                     {/* Timeline Items */}
                     {experiences.map((exp, i) => (
