@@ -55,12 +55,19 @@ export function ProjectsSection() {
                             key={category}
                             onClick={() => setActiveCategory(category)}
                             className={cn(
-                                "px-5 py-2 text-sm font-medium rounded-lg transition-all",
+                                "relative px-5 py-2 text-sm font-medium rounded-lg transition-colors z-10",
                                 activeCategory === category
-                                    ? "bg-gradient-to-r from-accent-1 to-accent-2 text-white"
-                                    : "glass text-foreground-muted hover:text-foreground"
+                                    ? "text-white"
+                                    : "text-foreground-muted hover:text-foreground hover:bg-glass"
                             )}
                         >
+                            {activeCategory === category && (
+                                <motion.span
+                                    layoutId="activeFilter"
+                                    className="absolute inset-0 bg-gradient-to-r from-accent-1 to-accent-2 rounded-lg -z-10"
+                                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                                />
+                            )}
                             {category === "ai" ? "AI" : category.charAt(0).toUpperCase() + category.slice(1)}
                         </button>
                     ))}
