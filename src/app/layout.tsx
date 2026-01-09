@@ -6,6 +6,7 @@ import { Footer } from "@/components/layout/footer";
 import { CustomCursor } from "@/components/ui/custom-cursor";
 import { AnimatedBackground } from "@/components/ui/animated-background";
 import { SmoothScrollProvider } from "@/components/providers/smooth-scroll";
+import { ClientLayout } from "@/components/layout/client-layout";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -80,20 +81,22 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} scroll-smooth`}>
       <body className="font-sans antialiased">
         <SmoothScrollProvider>
-          {/* Animated Background */}
-          <AnimatedBackground />
+          <ClientLayout>
+            {/* Animated Background */}
+            <AnimatedBackground />
 
-          {/* Custom Cursor (desktop only) */}
-          <CustomCursor />
+            {/* Custom Cursor (desktop only) */}
+            <CustomCursor />
 
-          {/* Navigation */}
-          <Navbar />
+            {/* Navigation */}
+            <Navbar />
 
-          {/* Main Content */}
-          <main>{children}</main>
+            {/* Main Content */}
+            <main>{children}</main>
 
-          {/* Footer */}
-          <Footer />
+            {/* Footer */}
+            <Footer />
+          </ClientLayout>
         </SmoothScrollProvider>
       </body>
     </html>
