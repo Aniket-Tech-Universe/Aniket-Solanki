@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { GradientText } from "@/components/ui/text-animations";
+import { Magnetic } from "@/components/ui/magnetic";
 
 const skillCategories = [
     {
@@ -115,16 +116,16 @@ export function SkillsSection() {
                     className="flex flex-wrap justify-center gap-3"
                 >
                     {technologies.map((tech, i) => (
-                        <motion.span
-                            key={tech}
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                            transition={{ duration: 0.3, delay: 0.7 + i * 0.03 }}
-                            whileHover={{ scale: 1.1, y: -2 }}
-                            className="px-4 py-2 text-sm font-medium glass hover:border-accent-1/50 cursor-default transition-colors"
-                        >
-                            {tech}
-                        </motion.span>
+                        <Magnetic key={tech} strength={0.2}>
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                                transition={{ duration: 0.3, delay: 0.7 + i * 0.03 }}
+                                className="px-4 py-2 text-sm font-medium glass hover:border-accent-1/50 cursor-pointer transition-colors rounded-lg border border-transparent"
+                            >
+                                {tech}
+                            </motion.div>
+                        </Magnetic>
                     ))}
                 </motion.div>
             </div>
