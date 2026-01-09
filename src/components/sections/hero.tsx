@@ -5,19 +5,15 @@ import { motion } from "framer-motion";
 import { ArrowDown, Github, Linkedin, Mail, Twitter } from "lucide-react";
 import { MagneticButton } from "@/components/ui/magnetic-button";
 import { TextReveal, GradientText, Typewriter } from "@/components/ui/text-animations";
+import { GlitchText } from "@/components/ui/glitch-text";
+
+import { SOCIAL_LINKS } from "@/constants";
 
 // Lazy load Three.js scene to improve initial load
 const HeroScene = dynamic(() => import("@/components/ui/hero-scene"), {
     ssr: false,
     loading: () => null,
 });
-
-const socialLinks = [
-    { icon: Github, href: "https://github.com/Aniket-Tech-Universe", label: "GitHub" },
-    { icon: Linkedin, href: "https://www.linkedin.com/in/aniket-solanki-463449360/", label: "LinkedIn" },
-    { icon: Twitter, href: "https://x.com/ANIKET_SOLANKI1", label: "Twitter" },
-    { icon: Mail, href: "mailto:hello@aniket.dev", label: "Email" },
-];
 
 export function HeroSection() {
     return (
@@ -55,7 +51,7 @@ export function HeroSection() {
                     >
                         <TextReveal delay={0.3}>Building the Future of </TextReveal>
                         <GradientText>
-                            <TextReveal delay={0.5}>AI & Web</TextReveal>
+                            <GlitchText>AI & Web</GlitchText>
                         </GradientText>
                     </motion.h1>
 
@@ -107,7 +103,7 @@ export function HeroSection() {
                         transition={{ duration: 0.6, delay: 1.4 }}
                         className="flex items-center justify-center gap-4"
                     >
-                        {socialLinks.map(({ icon: Icon, href, label }) => (
+                        {SOCIAL_LINKS.map(({ icon: Icon, href, label }) => (
                             <motion.a
                                 key={label}
                                 href={href}

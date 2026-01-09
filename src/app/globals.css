@@ -494,6 +494,79 @@ body {
   }
 }
 
+/* Glitch Effect */
+@keyframes glitch-1 {
+  0% {
+    clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+    transform: translate(0, 0);
+  }
+
+  20% {
+    clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+    transform: translate(-5px, 0);
+  }
+
+  40% {
+    clip-path: polygon(0 33%, 100% 33%, 100% 67%, 0 67%);
+    transform: translate(5px, 0);
+  }
+
+  60% {
+    clip-path: polygon(0 80%, 100% 80%, 100% 100%, 0 100%);
+    transform: translate(-5px, 0);
+  }
+
+  80% {
+    clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+    transform: translate(5px, 0);
+  }
+
+  100% {
+    clip-path: polygon(0 33%, 100% 33%, 100% 67%, 0 67%);
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes glitch-2 {
+  0% {
+    clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+    transform: translate(0, 0);
+  }
+
+  20% {
+    clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+    transform: translate(5px, 0);
+  }
+
+  40% {
+    clip-path: polygon(0 33%, 100% 33%, 100% 67%, 0 67%);
+    transform: translate(-5px, 0);
+  }
+
+  60% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    transform: translate(5px, 0);
+  }
+
+  80% {
+    clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0 100%);
+    transform: translate(-5px, 0);
+  }
+
+  100% {
+    clip-path: polygon(0 15%, 100% 15%, 100% 85%, 0 85%);
+    transform: translate(0, 0);
+  }
+}
+
+.animate-glitch-1 {
+  animation: glitch-1 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+}
+
+.animate-glitch-2 {
+  animation: glitch-2 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+}
+
 /* ============================================
    ADVANCED VISUAL EFFECTS
    ============================================ */

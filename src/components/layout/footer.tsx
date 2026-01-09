@@ -4,27 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { Github, Linkedin, Twitter, Mail, Heart } from "lucide-react";
 
-const socialLinks = [
-    {
-        icon: Github, href: "https://github.com/Aniket-Tech-Universe",
-        label: "GitHub",
-    },
-    {
-        icon: Linkedin,
-        href: "https://www.linkedin.com/in/aniket-solanki-463449360/",
-        label: "LinkedIn",
-    },
-    {
-        icon: Twitter,
-        href: "https://x.com/ANIKET_SOLANKI1",
-        label: "Twitter",
-    },
-    {
-        icon: Mail,
-        href: "mailto:hello@aniket.dev",
-        label: "Email",
-    },
-];
+import { SOCIAL_LINKS } from "@/constants";
 
 const footerLinks = [
     { label: "Home", href: "#home" },
@@ -65,7 +45,7 @@ export function Footer() {
 
                     {/* Social Links */}
                     <div className="flex items-center gap-4">
-                        {socialLinks.map(({ icon: Icon, href, label }) => (
+                        {SOCIAL_LINKS.map(({ icon: Icon, href, label }) => (
                             <motion.a
                                 key={label}
                                 href={href}
