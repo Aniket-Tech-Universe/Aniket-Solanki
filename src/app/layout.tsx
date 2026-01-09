@@ -79,12 +79,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} scroll-smooth`}>
       <body className="font-sans antialiased animate-fade-in">
+        <CustomCursor />
         <SmoothScrollProvider>
           {/* Animated Background */}
           <AnimatedBackground />
-
-          {/* Custom Cursor (desktop only) */}
-          <CustomCursor />
 
           {/* Navigation */}
           <Navbar />

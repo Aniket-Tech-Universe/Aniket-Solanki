@@ -38,7 +38,10 @@ export function CustomCursor() {
     }, [mouseX, mouseY]);
 
     return (
-        <div className="pointer-events-none fixed inset-0 z-[9999] hidden md:block">
+        <div
+            className="pointer-events-none fixed inset-0 hidden md:block"
+            style={{ zIndex: 2147483647 }}
+        >
             {/* Main Cursor Dot */}
             <motion.div
                 className="cursor-dot fixed top-0 left-0 w-2 h-2 bg-white rounded-full mix-blend-difference z-[9999]"
