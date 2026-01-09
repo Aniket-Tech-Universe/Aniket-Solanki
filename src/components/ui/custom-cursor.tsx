@@ -6,12 +6,9 @@ import { motion, useMotionValue, useSpring } from "framer-motion";
 export function CustomCursor() {
     const [isHovering, setIsHovering] = useState(false);
 
-    // Use MotionValues for direct DOM manipulation (Performance)
-    // Start off-screen to prevent flash
     const mouseX = useMotionValue(-100);
     const mouseY = useMotionValue(-100);
 
-    // Smooth physics for the ring
     const springConfig = { damping: 25, stiffness: 300, mass: 0.5 };
     const cursorX = useSpring(mouseX, springConfig);
     const cursorY = useSpring(mouseY, springConfig);
@@ -24,8 +21,6 @@ export function CustomCursor() {
 
         const checkHover = (e: MouseEvent) => {
             const target = e.target as HTMLElement;
-            // Robust check for interactive elements
-            // Handles bubbling correctly by checking closest interactive ancestor
             const isInteractive = target.closest("a, button, input, textarea, [role='button'], .card, .glass, .cursor-hover");
             setIsHovering(!!isInteractive);
         };
@@ -33,7 +28,6 @@ export function CustomCursor() {
         window.addEventListener("mousemove", moveCursor);
         window.addEventListener("mouseover", checkHover);
 
-        // Prevent default cursor on desktop when component is mounted
         document.documentElement.style.cursor = "none";
 
         return () => {
@@ -52,8 +46,9 @@ export function CustomCursor() {
                     x: mouseX,
                     y: mouseY,
                 }}
-                // Centering handled via transform template to key off dynamic X and Y
-                transformTemplate={({ x, y }) => `translate3d(${x}px, ${y}px, 0) translate(-50%, -50%)`}
+                // Centering via negative margins (Size 8px -> -4px)
+                // Using style directly to ensure it overrides any potential CSS conflicts
+                initial={{ marginLeft: -4, marginTop: -4 }}
             />
 
             {/* Trailing Ring */}
@@ -63,7 +58,8 @@ export function CustomCursor() {
                     x: cursorX,
                     y: cursorY,
                 }}
-                transformTemplate={({ x, y, scale }) => `translate3d(${x}px, ${y}px, 0) translate(-50%, -50%) scale(${scale})`}
+                // Centering via negative margins (Size 40px -> -20px)
+                initial={{ marginLeft: -20, marginTop: -20 }}
                 animate={{
                     scale: isHovering ? 1.5 : 1,
                     backgroundColor: isHovering ? "rgba(255, 255, 255, 0.1)" : "transparent",
