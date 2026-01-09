@@ -1,8 +1,8 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { motion, useInView } from "framer-motion";
-import { Send, Mail, MapPin, CheckCircle, Loader2, AlertCircle, Download } from "lucide-react";
+import { motion, useInView, AnimatePresence } from "framer-motion";
+import { Send, Mail, MapPin, CheckCircle, Loader2, AlertCircle, Download, Plane } from "lucide-react";
 import { GradientText } from "@/components/ui/text-animations";
 import { MagneticButton } from "@/components/ui/magnetic-button";
 import { cn } from "@/lib/utils";
@@ -242,14 +242,41 @@ export function ContactSection() {
                                 className="w-full"
                                 disabled={status === "loading" || status === "success"}
                             >
-                                {status === "loading" && (
-                                    <Loader2 className="w-4 h-4 animate-spin" />
-                                )}
-                                {status === "success" && <CheckCircle className="w-4 h-4" />}
-                                {status === "idle" && <Send className="w-4 h-4" />}
-                                {status === "idle" && "Send Message"}
-                                {status === "loading" && "Sending..."}
-                                {status === "success" && "Message Sent!"}
+                                <AnimatePresence mode="wait">
+                                    {status === "loading" ? (
+                                        <motion.div
+                                            key="loading"
+                                            initial={{ opacity: 0 }}
+                                            animate={{ opacity: 1 }}
+                                            exit={{ opacity: 0 }}
+                                            className="flex items-center gap-2"
+                                        >
+                                            <Loader2 className="w-4 h-4 animate-spin" />
+                                            <span>Sending...</span>
+                                        </motion.div>
+                                    ) : status === "success" ? (
+                                        <motion.div
+                                            key="success"
+                                            initial={{ opacity: 0, scale: 0.5 }}
+                                            animate={{ opacity: 1, scale: 1 }}
+                                            className="flex items-center gap-2"
+                                        >
+                                            <CheckCircle className="w-4 h-4" />
+                                            <span>Message Sent!</span>
+                                        </motion.div>
+                                    ) : (
+                                        <motion.div
+                                            key="idle"
+                                            initial={{ opacity: 0 }}
+                                            animate={{ opacity: 1 }}
+                                            exit={{ opacity: 0, x: 20, y: -20 }}
+                                            className="flex items-center gap-2"
+                                        >
+                                            <Send className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                                            <span>Send Message</span>
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
                             </MagneticButton>
                         </form>
                     </motion.div>
