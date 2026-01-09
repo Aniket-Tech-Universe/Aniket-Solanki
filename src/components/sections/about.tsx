@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { Code2, Palette, Rocket, Bot } from "lucide-react";
 import { GradientText } from "@/components/ui/text-animations";
 
@@ -38,71 +38,91 @@ const highlights = [
 export function AboutSection() {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-100px" });
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: ["start end", "end start"]
+    });
+
+    const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
 
     return (
         <section id="about" className="section" ref={ref}>
             <div className="container mx-auto px-6">
-                {/* Section Header */}
-                <motion.div
-                    initial={{ opacity: 0, y: 40 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.6 }}
-                    className="text-center mb-16"
-                >
-                    <span className="text-sm font-medium text-accent-1 uppercase tracking-widest mb-4 block">
-                        About Me
-                    </span>
-                    <h2 className="heading-lg mb-6">
-                        Crafting Digital <GradientText>Experiences</GradientText>
-                    </h2>
-                    <p className="text-lg text-foreground-muted max-w-2xl mx-auto">
-                        I&apos;m a Creative Technologist who lives at the intersection of design,
-                        performance, and artificial intelligence. My goal is to build digital products
-                        that are not just functional, but unforgettable.
-                    </p>
-                </motion.div>
-
-                {/* Stats Grid */}
-                <motion.div
-                    initial={{ opacity: 0, y: 40 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                    className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20"
-                >
-                    {stats.map((stat, i) => (
+                <div className="grid lg:grid-cols-2 gap-12 items-center">
+                    {/* Left Column: Content */}
+                    <div>
                         <motion.div
-                            key={stat.label}
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                            transition={{ duration: 0.4, delay: 0.3 + i * 0.1 }}
-                            className="glass p-6 text-center hover:border-accent-1/30 transition-colors"
+                            initial={{ opacity: 0, x: -50 }}
+                            animate={isInView ? { opacity: 1, x: 0 } : {}}
+                            transition={{ duration: 0.6 }}
+                            className="mb-12"
                         >
-                            <div className="text-3xl md:text-4xl font-bold gradient-text mb-2">
-                                {stat.value}
-                            </div>
-                            <div className="text-sm text-foreground-muted">{stat.label}</div>
-                        </motion.div>
-                    ))}
-                </motion.div>
+                            <span className="text-sm font-medium text-accent-1 uppercase tracking-widest mb-4 block">
+                                About Me
+                            </span>
+                            <h2 className="heading-lg mb-6">
+                                Crafting Digital <GradientText>Experiences</GradientText>
+                            </h2>
+                            <p className="text-lg text-foreground-muted mb-8">
+                                I&apos;m a Creative Technologist who lives at the intersection of design,
+                                performance, and artificial intelligence. My goal is to build digital products
+                                that are not just functional, but unforgettable.
+                            </p>
 
-                {/* Highlights Grid */}
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {highlights.map((item, i) => (
-                        <motion.div
-                            key={item.title}
-                            initial={{ opacity: 0, y: 40 }}
-                            animate={isInView ? { opacity: 1, y: 0 } : {}}
-                            transition={{ duration: 0.5, delay: 0.4 + i * 0.1 }}
-                            whileHover={{ y: -8 }}
-                            className="card group"
-                        >
-                            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-accent-1/20 to-accent-2/20 flex items-center justify-center mb-4 group-hover:from-accent-1/30 group-hover:to-accent-2/30 transition-colors">
-                                <item.icon className="w-6 h-6 text-accent-1" />
+                            {/* Highlights Grid (moved here) */}
+                            <div className="grid sm:grid-cols-2 gap-4">
+                                {highlights.map((item, i) => (
+                                    <motion.div
+                                        key={item.title}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={isInView ? { opacity: 1, y: 0 } : {}}
+                                        transition={{ duration: 0.5, delay: 0.2 + i * 0.1 }}
+                                        className="card group p-4"
+                                    >
+                                        <div className="flex items-center gap-3 mb-2">
+                                            <div className="p-2 rounded-lg bg-accent-1/10 group-hover:bg-accent-1/20 transition-colors">
+                                                <item.icon className="w-5 h-5 text-accent-1" />
+                                            </div>
+                                            <h3 className="font-semibold">{item.title}</h3>
+                                        </div>
+                                        <p className="text-xs text-foreground-muted">{item.description}</p>
+                                    </motion.div>
+                                ))}
                             </div>
-                            <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
-                            <p className="text-foreground-muted text-sm">{item.description}</p>
                         </motion.div>
-                    ))}
+                    </div>
+
+                    {/* Right Column: Parallax Stats Card */}
+                    <div className="relative hidden lg:block">
+                        <motion.div style={{ y }} className="relative z-10">
+                            <div className="absolute -inset-4 bg-gradient-to-r from-accent-1 to-accent-2 opacity-20 blur-2xl rounded-full" />
+                            <div className="card-premium p-8 border-glass-border/50 backdrop-blur-xl">
+                                <h3 className="text-xl font-bold mb-6">Impact at a Glance</h3>
+                                <div className="grid grid-cols-2 gap-6">
+                                    {stats.map((stat, i) => (
+                                        <div key={stat.label} className="text-center p-4 rounded-xl bg-background/50 border border-glass-border">
+                                            <div className="text-3xl font-bold gradient-text mb-1">
+                                                {stat.value}
+                                            </div>
+                                            <div className="text-xs text-foreground-muted uppercase tracking-wider">
+                                                {stat.label}
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </motion.div>
+                    </div>
+
+                    {/* Mobile Stats (Only visible on small screens) */}
+                    <div className="lg:hidden grid grid-cols-2 gap-4">
+                        {stats.map((stat) => (
+                            <div key={stat.label} className="glass p-4 text-center">
+                                <div className="text-2xl font-bold gradient-text mb-1">{stat.value}</div>
+                                <div className="text-xs text-foreground-muted">{stat.label}</div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
         </section>

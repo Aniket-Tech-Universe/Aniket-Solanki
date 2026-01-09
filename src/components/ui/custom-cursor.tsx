@@ -35,46 +35,35 @@ export function CustomCursor() {
             if (cursorRing.current) cursorRing.current.style.opacity = "0";
         };
 
-        // Add hover effect on interactive elements
-        const handleElementHover = () => {
-            if (cursorRing.current) {
-                cursorRing.current.style.width = "60px";
-                cursorRing.current.style.height = "60px";
-                cursorRing.current.style.borderColor = "var(--accent-1)";
-            }
-        };
+        const handleMouseOver = (e: MouseEvent) => {
+            const target = e.target as HTMLElement;
+            const isInteractive = target.closest('a, button, [role="button"], input, textarea, select, [data-cursor-hover]');
 
-        const handleElementLeave = () => {
-            if (cursorRing.current) {
-                cursorRing.current.style.width = "40px";
-                cursorRing.current.style.height = "40px";
-                cursorRing.current.style.borderColor = "rgba(255, 255, 255, 0.5)";
+            if (isInteractive) {
+                if (cursorRing.current) {
+                    cursorRing.current.style.width = "60px";
+                    cursorRing.current.style.height = "60px";
+                    cursorRing.current.style.borderColor = "var(--accent-1)";
+                }
+            } else {
+                if (cursorRing.current) {
+                    cursorRing.current.style.width = "40px";
+                    cursorRing.current.style.height = "40px";
+                    cursorRing.current.style.borderColor = "rgba(255, 255, 255, 0.5)";
+                }
             }
         };
 
         document.addEventListener("mousemove", handleMouseMove);
+        document.addEventListener("mouseover", handleMouseOver);
         document.addEventListener("mouseenter", handleMouseEnter);
         document.addEventListener("mouseleave", handleMouseLeave);
 
-        // Add listeners to interactive elements
-        const interactiveElements = document.querySelectorAll(
-            'a, button, [role="button"], input, textarea, select, [data-cursor-hover]'
-        );
-
-        interactiveElements.forEach((el) => {
-            el.addEventListener("mouseenter", handleElementHover);
-            el.addEventListener("mouseleave", handleElementLeave);
-        });
-
         return () => {
             document.removeEventListener("mousemove", handleMouseMove);
+            document.removeEventListener("mouseover", handleMouseOver);
             document.removeEventListener("mouseenter", handleMouseEnter);
             document.removeEventListener("mouseleave", handleMouseLeave);
-
-            interactiveElements.forEach((el) => {
-                el.removeEventListener("mouseenter", handleElementHover);
-                el.removeEventListener("mouseleave", handleElementLeave);
-            });
         };
     }, [mouseX, mouseY]);
 
