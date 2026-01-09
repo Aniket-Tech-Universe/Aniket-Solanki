@@ -46,11 +46,11 @@ const experiences = [
 
 export function ExperienceSection() {
     const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, margin: "-100px" });
     const { scrollYProgress } = useScroll({
         target: ref,
-        offset: ["start end", "end end"]
+        offset: ["start end", "end start"]
     });
+
     const scaleY = useSpring(scrollYProgress, {
         stiffness: 100,
         damping: 30,
@@ -62,16 +62,16 @@ export function ExperienceSection() {
             <div className="container mx-auto px-6">
                 {/* Section Header */}
                 <motion.div
-                    initial={{ opacity: 0, y: 40 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.6 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
                     className="text-center mb-16"
                 >
                     <span className="text-sm font-medium text-accent-1 uppercase tracking-widest mb-4 block">
-                        Experience
+                        Career Path
                     </span>
                     <h2 className="heading-lg mb-6">
-                        My <GradientText>Journey</GradientText>
+                        Professional <GradientText>Journey</GradientText>
                     </h2>
                     <p className="text-lg text-foreground-muted max-w-2xl mx-auto">
                         A timeline of my professional experience and education.
@@ -81,11 +81,10 @@ export function ExperienceSection() {
                 {/* Timeline */}
                 <div className="max-w-4xl mx-auto relative">
                     {/* Timeline Line */}
-                    {/* Timeline Line */}
                     <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-glass-border transform md:-translate-x-1/2" />
                     <motion.div
-                        style={{ scaleY }}
-                        className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-accent-1 via-accent-2 to-accent-3 transform md:-translate-x-1/2 origin-top"
+                        style={{ scaleY, transformOrigin: "top" }}
+                        className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-accent-1 via-accent-2 to-accent-3 transform md:-translate-x-1/2"
                     />
 
                     {/* Timeline Items */}
@@ -93,7 +92,8 @@ export function ExperienceSection() {
                         <motion.div
                             key={`${exp.title}-${i}`}
                             initial={{ opacity: 0, x: i % 2 === 0 ? -50 : 50 }}
-                            animate={isInView ? { opacity: 1, x: 0 } : {}}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true, margin: "-50px" }}
                             transition={{ duration: 0.5, delay: i * 0.15 }}
                             className={`relative flex items-center mb-12 ${i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
                                 }`}
