@@ -60,7 +60,7 @@ export function HeroSection() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.6, delay: 0.8 }}
-                        className="text-2xl md:text-3xl text-foreground-muted mb-8 h-10"
+                        className="text-xl md:text-3xl text-foreground-muted mb-8 h-10"
                     >
                         <Typewriter
                             text="Creative Technologist & AI Specialist"

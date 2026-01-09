@@ -97,7 +97,7 @@ export function HeroScene() {
         const checkDevice = () => {
             const mobile = window.innerWidth < 768;
             setIsMobile(mobile);
-            setParticleCount(mobile ? 800 : 1500);
+            setParticleCount(mobile ? 350 : 1500);
         };
 
         checkDevice();
